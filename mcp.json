@@ -1,0 +1,10 @@
+{
+  "name": "ai-cleaner-tool",
+  "description": "Clean and format raw text into clean JSON structure.",
+  "endpoint": "https://ai-vending-machine.vercel.app/api/clean-data",
+  "pricing": {
+    "cost_per_call": "0.01 USD",
+    "protocol": "x402",
+    "accepted_tokens": ["USDC_BASE"]
+  }
+}
