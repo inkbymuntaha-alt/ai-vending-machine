@@ -6,7 +6,7 @@ import { ExactEvmScheme } from "@x402/evm/exact/server";
 const payTo = "0x960E510E4E1dA4B13CE3b601202d4680AFcf02E0";
 
 const facilitator = new HTTPFacilitatorClient({
-  url: "https://x402.org/facilitator",
+  url: "https://facilitator.payai.network",
 });
 const server = new x402ResourceServer(facilitator);
 server.register("eip155:*", new ExactEvmScheme());
@@ -52,7 +52,7 @@ export const GET = withX402(
         {
           scheme: "exact",
           price: "$0.01",
-          network: "eip155:84532",
+          network: "eip155:8453",
           payTo,
         },
       ],
