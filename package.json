@@ -1,6 +1,14 @@
 {
   "name": "ai-vending-machine",
   "version": "1.0.0",
-  "type": "module"
+  "private": true,
+  "scripts": { "dev": "next dev", "build": "next build", "start": "next start" },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "@x402/next": "latest",
+    "@x402/core": "latest",
+    "@x402/evm": "latest"
+  }
 }
-
