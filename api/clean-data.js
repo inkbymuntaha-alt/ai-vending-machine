@@ -1,10 +1,11 @@
-export default async function handler(req, res) {
-  // Replace this with your exact MetaMask Address copied from your app
+export default function handler(req, res) {
+  // Replace this with your actual MetaMask public address
   const MY_WALLET = "0x960E510E4E1dA4B13CE3b601202d4680AFcf02E0"; 
-  
+
+  // Read incoming authorization headers
   const paymentHeader = req.headers['authorization'] || req.headers['payment-signature'];
 
-  // 1. Check if the AI agent signed and attached an x402 payment
+  // 1. If no payment header is provided, return HTTP 402 Payment Required
   if (!paymentHeader) {
     return res.status(402).json({
       error: "Payment Required",
@@ -15,9 +16,9 @@ export default async function handler(req, res) {
     });
   }
 
-  // 2. Perform execution logic for the paying agent
+  // 2. Process request body if payment is provided
   const { textToProcess } = req.body || {};
-  
+
   return res.status(200).json({
     status: "success",
     timestamp: new Date().toISOString(),
