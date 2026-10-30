@@ -9,6 +9,7 @@
     "react-dom": "latest",
     "@x402/next": "latest",
     "@x402/core": "latest",
-    "@x402/evm": "latest"
+    "@x402/evm": "latest",
+    "@x402/extensions": "latest"
   }
 }
