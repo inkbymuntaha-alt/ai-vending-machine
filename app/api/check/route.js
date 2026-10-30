@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 import { withX402 } from "@x402/next";
 import { x402ResourceServer, HTTPFacilitatorClient } from "@x402/core/server";
 import { ExactEvmScheme } from "@x402/evm/exact/server";
+import {
+  declareDiscoveryExtension,
+  bazaarResourceServerExtension,
+} from "@x402/extensions/bazaar";
 
 const payTo = "0x960E510E4E1dA4B13CE3b601202d4680AFcf02E0";
 
@@ -10,6 +14,7 @@ const facilitator = new HTTPFacilitatorClient({
 });
 const server = new x402ResourceServer(facilitator);
 server.register("eip155:*", new ExactEvmScheme());
+server.registerExtension(bazaarResourceServerExtension);
 
 async function handler(req) {
   const address = String(
@@ -58,6 +63,25 @@ export const GET = withX402(
       ],
       description: "Token risk check on Base: returns ok, caution or avoid",
       mimeType: "application/json",
+      extensions: {
+        ...declareDiscoveryExtension({
+          input: { address: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" },
+          inputSchema: {
+            properties: {
+              address: { type: "string", description: "Token contract address on Base" },
+            },
+            required: ["address"],
+          },
+          output: {
+            example: {
+              address: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+              verdict: "caution",
+              avoid: [],
+              caution: ["owner can mint more"],
+            },
+          },
+        }),
+      },
     },
   },
   server
