@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/clean-data", "destination": "/api/clean-data.js" }
+  ]
+}
