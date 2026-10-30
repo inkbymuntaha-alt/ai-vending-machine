@@ -1,0 +1,8 @@
+{
+  "name": "ai-data-vending-machine",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@vercel/node": "latest"
+  }
+}
